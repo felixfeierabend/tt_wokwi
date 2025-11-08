@@ -1,4 +1,4 @@
-//`include "signal_gen.v"
+`include "signal_gen.v"
 
 module tt_um_felixfeierabend (
     input  wire [7:0] ui_in,    // Dedicated inputs
@@ -21,5 +21,6 @@ signal_generator signal_gen (
 );
 
 assign uio_oe = 8'b00000001;
+assign uio_out[7:0] = 7'b0000000;
 
 endmodule
