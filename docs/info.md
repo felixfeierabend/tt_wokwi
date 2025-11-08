@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This project is a really simple and easy tone-generator, more details will follow shortly.
 
 ## How to test
 
-Explain how to use your project
+Details on how to test the design will follow shortly.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+The only external hardware required will be a microcontroller of some sort that interfaces with the data-bus, as well as a low-pass-filter and an impedance-converter to create analog signals from the digital output.
