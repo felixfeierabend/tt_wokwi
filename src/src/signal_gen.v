@@ -5,7 +5,7 @@ module signal_generator (
     input [4:0] data,       // databus
     
     output signal_out,      // output for the audio signal
-    output[7:0] debug       // debug-outputs
+    output[6:0] debug       // debug-outputs
 );
 
     reg [11:0] periodA = 12'd200;
