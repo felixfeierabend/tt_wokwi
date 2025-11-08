@@ -1,3 +1,8 @@
+`include "./tonegen.v"
+`include "./lfsr.v"
+`include "./mixer.v"
+`include "./pwm8.v"
+
 module signal_generator (
     input clk,              // clock 
     input write_strobe,     // strobe that controls register updates
@@ -26,7 +31,7 @@ module signal_generator (
     tonegen tA (.clk(clk), .period(periodA), .enable(enableA), .rst(1'b0), .wave(waveA));
     tonegen tB (.clk(clk), .period(periodB), .enable(enableB), .rst(1'b0), .wave(waveB));
 
-    lsfr n (.clk(clk), .rst(1'b0), .en_step(enableN), .noise_out(noise));
+    lfsr n (.clk(clk), .rst(1'b0), .en_step(enableN), .noise_out(noise));
 
     mixer mix (
         .waveA(waveA), 
@@ -46,8 +51,8 @@ module signal_generator (
     always @(posedge clk) begin
         if (write_strobe) begin
             case (address)
-                3'b000: periodA <= {periodA[11:4]; data};
-                3'b001: periodB <= {periodB[11:4]; data};
+                3'b000: periodA <= {periodA[11:4], data};
+                3'b001: periodB <= {periodB[11:4], data};
                 3'b010: volA <= data;
                 3'b011: volB <= data;
                 3'b100: volN <= data;

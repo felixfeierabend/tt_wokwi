@@ -1,3 +1,5 @@
+`include "signal_gen.v"
+
 module tt_um_felixfeierabend (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
@@ -13,7 +15,7 @@ signal_generator signal_gen (
     .clk(clk),
     .write_strobe(uio_in[0]),
     .address(ui_in[2:0]),
-    .data(ui_in[7:2]),
+    .data(ui_in[7:3]),
     .signal_out(uo_out[0]),
     .debug(uo_out[7:1])
 );

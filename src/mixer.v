@@ -15,14 +15,14 @@ module mixer (
 );
 
     // Calculate Values for channels
-    wire[4:0] a_val = (enableA & waveA) ? volA : 0;
-    wire[4:0] b_val = (enableB & waveB) ? volB : 0;
+    wire[4:0] a_val = (enableA & waveA) ? volumeA : 0;
+    wire[4:0] b_val = (enableB & waveB) ? volumeB : 0;
     wire[4:0] noise_val = (enableNoise & noise) ? volumeNoise : 0;
 
     // sum channels for output
     wire[5:0] sum = a_val + b_val + noise_val;
 
     // scale sum up to 8 bit
-    assign mixout = {su,. 2'b00};
+    assign mixout = {sum, 2'b00};
     
 endmodule
