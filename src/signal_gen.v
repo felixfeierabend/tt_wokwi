@@ -60,6 +60,15 @@ module signal_generator (
                 default: ;
             endcase
         end
+
+        assign debug[0] = waveA;
+        assign debug[1] = waveB;
+        assign debug[2] = noise;
+        assign debug[3] = enableA;
+        assign debug[4] = enableB;
+        assign debug[5] = enableN;
+        assign debug[6] = mix_level[0];
+
     end
     
 endmodule
