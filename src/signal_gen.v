@@ -2,6 +2,7 @@
 // `include "./lfsr.v"
 // `include "./mixer.v"
 // `include "./pwm8.v"
+// `include "./vibrato.v"
 
 module signal_generator (
     input clk,              // clock 
@@ -23,11 +24,16 @@ module signal_generator (
     reg enableA = 1;
     reg enableB = 1;
     reg enableN = 1;
+    reg enableVib = 1;
 
     wire waveA;
     wire waveB;
     wire noise;
     wire [7:0] mix_level;
+    wire [3:0] vibA;
+
+    reg [3:0] vib_depth = 4'd4;
+    reg [7:0] vib_speed = 8'd50;
 
     assign debug[0] = waveA;
     assign debug[1] = waveB;
@@ -37,7 +43,9 @@ module signal_generator (
     assign debug[5] = enableN;
     assign debug[6] = mix_level[0];
 
-    tonegen tA (.clk(clk), .period(periodA), .enable(enableA), .rst(rst), .wave(waveA));
+    vibrato vibA_gen (.clk(clk), .enable(enableVib), .depth(vib_depth), .speed(vib_speed), .vibrato_o(vibA));
+
+    tonegen tA (.clk(clk), .period(periodA + {8'b0, vibA}), .enable(enableA), .rst(rst), .wave(waveA));
     tonegen tB (.clk(clk), .period(periodB), .enable(enableB), .rst(rst), .wave(waveB));
 
     lfsr n (.clk(clk), .rst(rst), .en_step(enableN), .noise_out(noise));
@@ -66,6 +74,10 @@ module signal_generator (
                 3'b011: volB <= data;
                 3'b100: volN <= data;
                 3'b101: {enableA, enableB, enableN} <= {data[2:0]};
+                3'b110: begin
+                    enableVib <= data[0];
+                    vib_depth <= data[4:1];
+                end
                 default: ;
             endcase
         end
