@@ -20,7 +20,7 @@ project:
     - "tt_top_level.v"
     - "signal_gen.v"
     - "tonegen.v"
-    - "clock_scaler.v"
+    - "vibrato.v"
     - "lfsr.v"
     - "mixer.v"
     - "pwm8.v"
