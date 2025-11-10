@@ -6,8 +6,8 @@ module lfsr (
     input en_step,          // Enable Step -> Enable shifting of register
     output reg noise_out        // Output of noise-bit
 );
-    reg[15:0] noise_reg;    // 16-bit shift-register
-    reg feedback;           // feedback value
+    reg[15:0] noise_reg = 0;    // 16-bit shift-register
+    reg feedback = 0;           // feedback value
 
     initial noise_reg = 16'hACE1;   // often used seed for lfsr-based noise
     initial noise_out = 1'b0;
