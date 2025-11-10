@@ -2,7 +2,7 @@ module pwm8 (
     input clk,              // clock input
     input[7:0] duty_cycle,  // Duty cycle input
     input rst,
-    output reg pwm_o = 0;   // pwm output
+    output reg pwm_o = 0   // pwm output
 );
     reg[7:0] clk_cnt = 0;   // counter of positive clk edges
 

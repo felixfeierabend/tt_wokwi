@@ -1,9 +1,9 @@
-// `include "./tonegen.v"
-// `include "./lfsr.v"
-// `include "./mixer.v"
-// `include "./pwm8.v"
-// `include "./vibrato.v"
-// `include "./adsr.v"
+`include "./tonegen.v"
+`include "./lfsr.v"
+`include "./mixer.v"
+`include "./pwm8.v"
+`include "./vibrato.v"
+`include "./adsr.v"
 
 module signal_generator (
     input clk,              // clock 
