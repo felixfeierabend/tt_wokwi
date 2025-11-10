@@ -37,7 +37,9 @@ module signal_generator (
 
     wire [3:0] vibA;
     reg [3:0] vib_depth = 4'd4;
-    reg [7:0] vib_speed = 8'd50;
+    reg [7:0] vib_speed;
+
+    initial vib_speed = 8'd50;
 
     wire signal_raw;
 
