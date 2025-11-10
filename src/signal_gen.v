@@ -47,11 +47,11 @@ module signal_generator (
     // assign debug[1] = (^waveB === 1'bx) ? 1'b0 : waveB;
     assign debug[0] = 0;
     assign debug[1] = 0;
-    assign debug[2] = noise;
-    assign debug[3] = enableA;
-    assign debug[4] = enableB;
-    assign debug[5] = enableN;
-    assign debug[6] = clk;
+    assign debug[2] = 0;
+    assign debug[3] = 0;
+    assign debug[4] = 0;
+    assign debug[5] = 0;
+    assign debug[6] = 0;
 
     vibrato vibA_gen (.clk(clk), .enable(enableVib), .depth(vib_depth), .speed(vib_speed), .vibrato_o(vibA));
 

@@ -5,7 +5,7 @@ module clock_scale (
     input [10:0] scale_factor,
     output reg clk_out
 );
-    reg[11:0] counter = 0;
+    reg[10:0] counter = 0;
 
     always @(posedge(clk)) begin
         if (en) begin
